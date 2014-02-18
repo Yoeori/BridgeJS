@@ -59,17 +59,20 @@ Array.prototype.clean = function(deleteValue) {
 };
 
 
-window.onresize = function() {
-	
-	
-};
+
+if(typeof IS_SERVER === "undefined") {
+	window.onresize = function() {
 
 
-var game;
+	};
 
-window.onload = function() {
-	
-	window.onresize();
-	game = new Main();
-	
-};
+
+	var game;
+
+	window.onload = function() {
+
+		window.onresize();
+		game = new Main();
+
+	};
+}
