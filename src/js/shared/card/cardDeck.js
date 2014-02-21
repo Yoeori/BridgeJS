@@ -22,6 +22,13 @@ var CardDeck = Class.extend({
 		return false;
 	},
 	
+	deleteCard : function(card) {
+		if(this.cards.length !== 0) {
+			position = $.inArray(card, this.cards);
+			if(~position) this.cards.splice(position, 1);
+		}
+	},
+	
 	drawRandomCardAndDelete : function() {
 		if(this.cards.length !== 0) {
 			var card = this.drawRandomCard();

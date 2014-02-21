@@ -35,6 +35,14 @@ var BridgeCardDeck = CardDeck.extend({
 			this.players[player] = orderedRank[0].concat(orderedRank[1]).concat(orderedRank[2]).concat(orderedRank[3]);
 		}
 		
+	},
+	
+	
+	deletePlayerCard : function(player, card) {
+		if(this.players[player].length !== 0) {
+			position = $.inArray(card, this.players[player]);
+			if(~position) this.players[player].splice(position, 1);
+		}
 	}
 	
 });

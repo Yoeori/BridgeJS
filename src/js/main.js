@@ -1,14 +1,19 @@
 var Main = Class.extend({
 	
 	deck : 0,
+	controller : 0,
+	view : 0,
+	game : 0,
+	
 	
 	init : function() {
 		
+		this.controller = new Controller(this);
+		this.view = new ViewBridge(this);
+		this.game = new GameBridge(this);
+		
+		
 		object = this;
-		$("#btnNewGame").click(function() {
-			object.deck = new BridgeCardDeck();
-			object.renderDeck();
-		});
 		
 		$("#btnOrderCards").click(function() {
 			if(object.deck !== 0) {
@@ -18,14 +23,9 @@ var Main = Class.extend({
 		});
 	},
 	
-	
-	renderDeck : function() {
-		for(var i = 0; i < 4; i++) {
-			$("#cardsP"+(i+1)).empty();
-			for(var o = 0; o < this.deck.players[i].length; o++) {
-				$("#cardsP"+(i+1)).append("<li>"+this.deck.players[i][o].getCardText()+"</li>");
-			}
-		}
-	}
+	onAction : function(action, data) {
+		
+		this.game.onAction(action, data);
+	},
 	
 });

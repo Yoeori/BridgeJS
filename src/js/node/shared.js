@@ -10,7 +10,7 @@ function include(name) {
 	});
 }
 
-include("../helper.js");
+include("../shared/helper.js");
 include("../shared/card/card.js");
 
 

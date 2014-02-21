@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path');
+var express = require('express'), routes = require('./routes'), http = require('http'), path = require('path');
 
 var game_module = require("./shared");
 var gameloader = game_module.createGameInstance({});
@@ -12,6 +12,10 @@ for(type in gameloader) {
 }
 
 var app = express(), server = app.listen(3000), io = require('socket.io').listen(server);
+GLOBAL["io"] = io;
+
+var handler = require("./handler");
+
 // all environments
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');

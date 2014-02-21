@@ -5,13 +5,16 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<script src="//localhost:3000/socket.io/socket.io.js"></script>
+		<!--<script src="//localhost:3000/socket.io/socket.io.js"></script>-->
 		<script src="js/jquery.2.1.0.min.js" type="text/javascript"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		<script src="js/helper.js" type="text/javascript"></script>
+		<script src="js/shared/helper.js" type="text/javascript"></script>
 		
+		<script src="js/controller.js" type="text/javascript"></script>
+		<script src="js/viewBridge.js" type="text/javascript"></script>
 		<script src="js/main.js" type="text/javascript"></script>
 		
+		<script src="js/shared/gameBridge.js" type="text/javascript"></script>
 		<script src="js/shared/card/card.js" type="text/javascript"></script>
 		<script src="js/shared/card/cardDeck.js" type="text/javascript"></script>
 		<script src="js/shared/card/bridgeCard.js" type="text/javascript"></script>
@@ -23,25 +26,51 @@
 			<h1>BridgeJS concept</h1>
 			<div class="row">
 				<div class="col-xs-12">
-					<button class="btn btn-info" id="btnNewGame">New Game</button>
-					<button class="btn btn-info" id="btnOrderCards">Order cards</button>
+					<button class="btn btn-info" data-controller="newGame">New Game</button>
+					<button class="btn btn-info" data-controller="orderDeck">Order cards</button>
+					<button class="btn btn-info" data-controller="startGame">start game</button>
 				</div>
 			</div>
 			<br />
 			<div class="row">
 				<div class="col-xs-3">
-					<p data-player="1">Player 1 (NORTH)</p>
-					<ul id="cardsP1"></ul>
+					<p data-view="p1">Player 1 (NORTH)</p>
+					<ul data-view="cardsP1"></ul>
 					<div class="row"><hr size="3" noshade></div>
-					<p data-player="2">Player 2 (EAST)</p>
-					<ul id="cardsP2"></ul>
+					<p data-view="p2">Player 2 (EAST)</p>
+					<ul data-view="cardsP2"></ul>
 				</div>
 				<div class="col-xs-3">
-					<p data-player="3">Player 3 (SOUTH)</p>
-					<ul id="cardsP3"></ul>
+					<p data-view="p3">Player 3 (SOUTH)</p>
+					<ul data-view="cardsP3"></ul>
 					<div class="row"><hr size="3" noshade></div>
-					<p data-player="4">Player 4 (WEST)</p>
-					<ul id="cardsP4"></ul>
+					<p data-view="p4">Player 4 (WEST)</p>
+					<ul data-view="cardsP4"></ul>
+				</div>
+				<div class="col-xs-6">
+					<p><b>Current cards</b></p>
+					<div class="row">
+						<div class="col-xs-3"><p data-view="p1">NORTH</p><span data-view="currentcardp1"></span></div>
+						<div class="col-xs-3"><p data-view="p2">EAST</p><span data-view="currentcardp2"></span></div>
+						<div class="col-xs-3"><p data-view="p3">SOUTH</p><span data-view="currentcardp3"></span></div>
+						<div class="col-xs-3"><p data-view="p4">WEST</p><span data-view="currentcardp4"></span></div>
+					</div>
+					<br />
+					<p><b>Score</b></p>
+					<div class="row">
+						<div class="col-xs-6">
+							<p>NORTH/SOUTH</p>
+							<p>EAST/WEST</p>
+						</div>
+						<div class="col-xs-3">
+							<p data-view="scoret1">++--++-+--+-+</p>
+							<p data-view="scoret2">--++--+-++-+-</p>
+						</div>
+						<div class="col-xs-3">
+							<p data-view="fullscoret1">7</p>
+							<p data-view="fullscoret2">6</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
